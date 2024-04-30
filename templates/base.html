@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+
+  <head>
+    <title>{{ _("YunoHost app store") }} | {% block title %}{% endblock %} </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fork-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tailwind.css') }}">
+  </head>
+
+  <body>
+        <header class="pb-2 shadow-sm">
+          <div
+            class="flex h-12 items-center gap-8 pt-2 px-4 sm:px-6 lg:px-8"
+          >
+            <a class="block" href="/">
+              <span class="sr-only">{{ _("Home") }}</span>
+              <img alt="YunoHost Logo" src="{{ url_for('static', filename='yunohost-package.png') }}" style="height: 3em;">
+            </a>
+
+            <div class="flex flex-1 items-center justify-end md:justify-between">
+              <nav class="hidden md:block">
+                <ul class="flex items-center gap-6 text-sm">
+                  <li>
+                    <a class="text-gray-800 font-bold transition hover:text-gray-500/75" href="FIXME">
+                        {{ _("Dashboard") }} 
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+        <main class="my-2 mx-auto max-w-screen-md">
+        {% block main %}
+        {% endblock %}
+        </main>
+
+        <footer class="h-5 my-5 text-center">
+          <p>
+            {{ _("Made with <i class='text-red-500 fa fa-heart-o' aria-label='love'></i> using <a class='text-blue-800' href='https://flask.palletsprojects.com'>Flask</a> and <a class='text-blue-800' href='https://tailwindcss.com/'>TailwindCSS</a>") }}
+            • <a class='text-blue-800' href='FIXME'><i class='fa fa-code fa-fw' aria-hidden='true'></i> {{ _("Source") }}</a>
+          </p>
+        </footer>
+
+  </body>
+
+</html>
