@@ -40,8 +40,6 @@ def get_locale(*args, **kwargs):
 
 babel = Babel(app, locale_selector=get_locale)
 
-###############################################################################
-
 
 @app.template_filter("days_ago")
 def days_ago(timestamp):
@@ -60,4 +58,21 @@ def favicon():
 def index():
     return render_template(
         "index.html", data=json.loads(open(".cache/dashboard.json").read())
+    )
+
+
+@app.route("/charts")
+def charts():
+
+    current = json.loads(open(".cache/dashboard.json").read())
+    level_summary = {}
+    for i in range(0,9):
+        level_summary[i] = len([infos for infos in current.values() if infos.get("ci_results", {}).get("main").get("level") == i])
+    level_summary["unknown"] = len([infos for infos in current.values() if infos.get("ci_results", {}).get("main").get("level") in [None, "?"]])
+
+    return render_template(
+        "charts.html",
+        level_summary=level_summary,
+        history=json.loads(open(".cache/history.json").read()),
+        news_per_date=json.loads(open(".cache/news.json").read())
     )

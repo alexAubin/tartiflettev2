@@ -201,7 +201,7 @@
         data-last-update-testing-daysago="{% if infos["testing"] %}{{ infos["testing"]["timestamp_updated"] | days_ago }}{% endif %}"
         data-last-update-autoupdate-daysago="{% if infos["ci-auto-update"] %}{{ infos["ci-auto-update"]["timestamp_updated"] | days_ago }}{% endif %}"
      >
-        <td class="text-center text-blue-600 font-bold"><a href="{{ infos["url"] }}">{{ app }}</a></td>
+        <td class="text-center text-blue-600 font-medium"><a href="{{ infos["url"] }}">{{ app }}</a></td>
         <td class="font-bold">
             <a href="https://apps.yunohost.org/app/{{ app }}">
                 {{ infos["public_level"] }}

@@ -4,6 +4,7 @@ chmod +x tailwindcss-linux-x64
 ./tailwindcss-linux-x64 --input tailwind-local.css --output tailwind.css --minify
 
 curl -L https://cdn.tailwindcss.com > tailwind-css.js
+curl -L https://cdn.canvasjs.com/ga/canvasjs.min.js > canvasjs.min.js
 
 curl https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css > fork-awesome.min.css
 sed -i 's@../fonts/@@g' ./fork-awesome.min.css
