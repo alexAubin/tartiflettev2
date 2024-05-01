@@ -45,6 +45,11 @@ babel = Babel(app, locale_selector=get_locale)
 def days_ago(timestamp):
     return int((time.time() - timestamp) / (60 * 60 * 24))
 
+@app.context_processor
+def utils():
+    return {
+        "locale": get_locale()
+    }
 
 ###############################################################################
 
