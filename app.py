@@ -2,7 +2,6 @@ import time
 import json
 import sys
 import os
-from slugify import slugify
 from flask import (
     Flask,
     send_from_directory,
@@ -14,6 +13,8 @@ from flask import (
 from flask_babel import Babel
 from flask_babel import gettext as _
 
+###############################################################################
+
 app = Flask(__name__, static_url_path="/assets", static_folder="assets")
 
 #try:
@@ -24,14 +25,13 @@ app = Flask(__name__, static_url_path="/assets", static_folder="assets")
 #    )
 #    sys.exit(1)
 
-#if config.get("DEBUG"):
-#    app.debug = True
-app.config["DEBUG"] = True
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+if app.config.get("DEBUG"):
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 AVAILABLE_LANGUAGES = ["en"] + os.listdir("translations")
 
-def get_locale():
+@app.template_filter("locale")
+def get_locale(*args, **kwargs):
     # try to guess the language from the user accept
     # The best match wins.
     return request.accept_languages.best_match(AVAILABLE_LANGUAGES) or "en"
@@ -44,8 +44,9 @@ babel = Babel(app, locale_selector=get_locale)
 def days_ago(timestamp):
     return int((time.time() - timestamp) / (60*60*24))
 
+###############################################################################
 
-#
+
 @app.route("/favicon.ico")
 def favicon():
     return send_from_directory("assets", "favicon.png")
@@ -55,6 +56,5 @@ def favicon():
 def index():
     return render_template(
         "index.html",
-        locale=get_locale(),
-        data=json.loads(open("data.json").read())
+        data=json.loads(open(".cache/dashboard.json").read())
     )

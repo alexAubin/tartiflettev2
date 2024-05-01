@@ -1,7 +1,4 @@
 {% extends "base.html" %}
-{% block title %}
-{{ _("Application Dashboard") }} 
-{% endblock %}
 {% block main %}
 
 <div class="mx-auto w-full text-center p-8">
@@ -181,7 +178,7 @@
 
 </script>
 
-<table id="appTable">
+<table id="appTable" class="mx-auto">
     <tr class="h-20">
         <th class="w-32">{{ _("App") }}</th>
         <th class="-rotate-45 w-16 text-left">{{ _("Catalog") }}</th>

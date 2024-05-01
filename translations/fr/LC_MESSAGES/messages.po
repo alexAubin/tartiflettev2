@@ -1,0 +1,124 @@
+# French translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-05-01 16:28+0200\n"
+"PO-Revision-Date: 2024-05-01 16:28+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/base.html:5
+msgid "YunoHost app dashboard"
+msgstr ""
+
+#: templates/base.html:22
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:31
+msgid "Dashboard"
+msgstr ""
+
+#: templates/base.html:47
+msgid ""
+"Made with <i class='text-red-500 fa fa-heart-o' aria-label='love'></i> "
+"using <a class='text-blue-800' "
+"href='https://flask.palletsprojects.com'>Flask</a> and <a class='text-"
+"blue-800' href='https://tailwindcss.com/'>TailwindCSS</a>"
+msgstr ""
+
+#: templates/base.html:48
+msgid "Source"
+msgstr ""
+
+#: templates/index.html:7
+msgid "App packaging dashboard"
+msgstr ""
+
+#: templates/index.html:13
+msgid "Filter"
+msgstr ""
+
+#: templates/index.html:20
+msgid "Regressions on main CI"
+msgstr ""
+
+#: templates/index.html:21
+msgid "Broken / low quality apps"
+msgstr ""
+
+#: templates/index.html:22
+msgid "Outdated tests on main CI"
+msgstr ""
+
+#: templates/index.html:23
+msgid "Major regressions on Bookworm CI"
+msgstr ""
+
+#: templates/index.html:24
+msgid "Apps with testings PRs"
+msgstr ""
+
+#: templates/index.html:25
+msgid "Apps with autoupdate PRs"
+msgstr ""
+
+#: templates/index.html:29
+msgid "Sort by"
+msgstr ""
+
+#: templates/index.html:35
+msgid "Alphabetical"
+msgstr ""
+
+#: templates/index.html:36
+msgid "Quality level"
+msgstr ""
+
+#: templates/index.html:37
+msgid "Popularity stars"
+msgstr ""
+
+#: templates/index.html:38
+msgid "Last update on main/master branch"
+msgstr ""
+
+#: templates/index.html:39
+msgid "Last update on testing branch"
+msgstr ""
+
+#: templates/index.html:183
+msgid "App"
+msgstr ""
+
+#: templates/index.html:184
+msgid "Catalog"
+msgstr ""
+
+#: templates/index.html:185
+msgid "Main CI"
+msgstr ""
+
+#: templates/index.html:186
+msgid "Bookworm CI"
+msgstr ""
+
+#: templates/index.html:187
+msgid "Testing PR"
+msgstr ""
+
+#: templates/index.html:188
+msgid "Autoupdate PR"
+msgstr ""
+

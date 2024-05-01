@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ locale }}">
+<html lang="{{ request|locale }}">
 
   <head>
-    <title>{{ _("YunoHost app store") }} | {% block title %}{% endblock %} </title>
+    <title>{{ _("YunoHost app dashboard") }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='fork-awesome.min.css') }}">
+    {% if config.DEBUG %}
+    <script src="{{ url_for('static', filename='tailwind-css.js') }}"></script>
+    {% else %}
     <link rel="stylesheet" href="{{ url_for('static', filename='tailwind.css') }}">
+    {% endif %}
   </head>
 
   <body>
@@ -23,7 +27,7 @@
               <nav class="hidden md:block">
                 <ul class="flex items-center gap-6 text-sm">
                   <li>
-                    <a class="text-gray-800 font-bold transition hover:text-gray-500/75" href="FIXME">
+                    <a class="text-gray-800 font-bold transition hover:text-gray-500/75" href="/">
                         {{ _("Dashboard") }} 
                     </a>
                   </li>
@@ -33,7 +37,7 @@
           </div>
         </header>
 
-        <main class="my-2 mx-auto max-w-screen-md">
+        <main class="my-2 mx-auto max-w-screen-lg">
         {% block main %}
         {% endblock %}
         </main>

@@ -1,8 +1,23 @@
 import requests
 import json
+import toml
 from github import Github
 
-g = Github(open("../apps/apps/.github_token").read().strip())
+try:
+    config = toml.loads(open("config.toml").read())
+except Exception as e:
+    print(
+        "You should create a config.toml with the appropriate key/values, cf config.toml.example"
+    )
+    sys.exit(1)
+
+github_token = config.get("GITHUB_TOKEN")
+
+if github_token is None:
+    print("You should add a GITHUB_TOKEN to config.toml")
+    sys.exit(1)
+
+g = Github(github_token)
 
 popularity_stars = requests.get("https://apps.yunohost.org/popularity.json").json()
 catalog = requests.get("https://app.yunohost.org/default/v3/apps.json").json()
@@ -74,4 +89,4 @@ for app, infos in catalog["apps"].items():
     if infos["git"]["url"].lower().startswith("https://github.com/"):
         consolidated_infos[app].update(get_github_infos(infos["git"]["url"].lower().replace("https://github.com/", "")))
 
-open("data.json", "w").write(json.dumps(consolidated_infos))
+open(".cache/dashboard.json", "w").write(json.dumps(consolidated_infos))
