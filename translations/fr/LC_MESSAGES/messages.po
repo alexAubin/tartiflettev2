@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-01 16:28+0200\n"
-"PO-Revision-Date: 2024-05-01 16:28+0200\n"
+"POT-Creation-Date: 2024-05-02 17:41+0200\n"
+"PO-Revision-Date: 2024-05-02 17:41+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -20,17 +20,21 @@ msgstr ""
 
 #: templates/base.html:5
 msgid "YunoHost app dashboard"
-msgstr ""
+msgstr "Tableau de bord des apps YunoHost"
 
 #: templates/base.html:22
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 #: templates/base.html:31
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
-#: templates/base.html:47
+#: templates/base.html:36
+msgid "Charts & history"
+msgstr "Graphes & historique"
+
+#: templates/base.html:52
 msgid ""
 "Made with <i class='text-red-500 fa fa-heart-o' aria-label='love'></i> "
 "using <a class='text-blue-800' "
@@ -38,87 +42,211 @@ msgid ""
 "blue-800' href='https://tailwindcss.com/'>TailwindCSS</a>"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:53
 msgid "Source"
 msgstr ""
 
+#: templates/charts.html:5
+msgid "Apps quality level from automatic tests"
+msgstr "Niveau de qualité des apps dans les tests automatiques"
+
+#: templates/charts.html:9
+msgid "Apps quality level history"
+msgstr "Historique du niveau de qualité des apps"
+
+#: templates/charts.html:14
+msgid "History"
+msgstr "Historique"
+
+#: templates/charts.html:22
+msgid "Added"
+msgstr "Ajouté"
+
+#: templates/charts.html:28
+msgid "Repaired"
+msgstr "Réparée"
+
+#: templates/charts.html:34
+msgid "Broke"
+msgstr "Cassée"
+
+#: templates/charts.html:40
+msgid "Removed"
+msgstr "Retirée"
+
+#: templates/charts.html:80
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: templates/charts.html:81
+msgid "Level 0"
+msgstr "Niveau 0"
+
+#: templates/charts.html:82
+msgid "Level 1"
+msgstr "Niveau 1"
+
+#: templates/charts.html:83
+msgid "Level 2"
+msgstr "Niveau 2"
+
+#: templates/charts.html:84
+msgid "Level 3"
+msgstr "Niveau 3"
+
+#: templates/charts.html:85
+msgid "Level 4"
+msgstr "Niveau 4"
+
+#: templates/charts.html:86
+msgid "Level 5"
+msgstr "Niveau 5"
+
+#: templates/charts.html:87
+msgid "Level 6"
+msgstr "Niveau 6"
+
+#: templates/charts.html:88
+msgid "Level 7"
+msgstr "Niveau 7"
+
+#: templates/charts.html:89
+msgid "Level 8"
+msgstr "Niveau 8"
+
+#: templates/charts.html:107
+#, python-format
+msgid "Level %(level)s:"
+msgstr "Niveau %(level)s:"
+
+#: templates/charts.html:107
+msgid "Total:"
+msgstr ""
+
+#: templates/charts.html:108
+#, python-format
+msgid "Level %(level)s"
+msgstr "Niveau %(level)s"
+
+#: templates/index.html:5
+msgid "YunoHost package logo"
+msgstr "Logo de paquet YunoHost"
+
 #: templates/index.html:7
 msgid "App packaging dashboard"
-msgstr ""
+msgstr "Tableau de bord des apps YunoHost"
 
 #: templates/index.html:13
 msgid "Filter"
-msgstr ""
+msgstr "Filtrer"
+
+#: templates/index.html:19
+msgid "(None)"
+msgstr "(Aucun)"
 
 #: templates/index.html:20
 msgid "Regressions on main CI"
-msgstr ""
+msgstr "Regressions sur la CI principale"
 
 #: templates/index.html:21
 msgid "Broken / low quality apps"
-msgstr ""
+msgstr "Apps cassées / mauvaise qualité"
 
 #: templates/index.html:22
 msgid "Outdated tests on main CI"
-msgstr ""
+msgstr "Tests périmés sur la CI principale"
 
 #: templates/index.html:23
 msgid "Major regressions on Bookworm CI"
-msgstr ""
+msgstr "Regressions importantes sur la CI bookworm"
 
 #: templates/index.html:24
 msgid "Apps with testings PRs"
-msgstr ""
+msgstr "Apps avec une PR de testing"
 
 #: templates/index.html:25
 msgid "Apps with autoupdate PRs"
-msgstr ""
+msgstr "Apps ave cune PR d'autoupdate"
 
-#: templates/index.html:29
+#: templates/index.html:26
+msgid "Packaging v1 apps"
+msgstr "Apps en packaging v1"
+
+#: templates/index.html:30
 msgid "Sort by"
-msgstr ""
-
-#: templates/index.html:35
-msgid "Alphabetical"
-msgstr ""
+msgstr "Trier par"
 
 #: templates/index.html:36
-msgid "Quality level"
-msgstr ""
+msgid "Alphabetical"
+msgstr "Alphabétique"
 
 #: templates/index.html:37
-msgid "Popularity stars"
-msgstr ""
+msgid "Quality level"
+msgstr "Niveau de qualité"
 
-#: templates/index.html:38
-msgid "Last update on main/master branch"
-msgstr ""
+#: templates/index.html:38 templates/index.html:146
+msgid "Popularity stars"
+msgstr "Popularité"
 
 #: templates/index.html:39
-msgid "Last update on testing branch"
-msgstr ""
+msgid "Last update on main/master branch"
+msgstr "Dernière maj sur la branche principale/master"
 
-#: templates/index.html:183
+#: templates/index.html:40
+msgid "Last update on testing branch"
+msgstr "Dernière maj sur la branche testing"
+
+#: templates/index.html:48
 msgid "App"
 msgstr ""
 
-#: templates/index.html:184
+#: templates/index.html:49
 msgid "Catalog"
-msgstr ""
+msgstr "Catalogue"
 
-#: templates/index.html:185
+#: templates/index.html:50
 msgid "Main CI"
-msgstr ""
+msgstr "CI principale"
 
-#: templates/index.html:186
+#: templates/index.html:51
 msgid "Bookworm CI"
-msgstr ""
+msgstr "CI bookworm"
 
-#: templates/index.html:187
+#: templates/index.html:52
 msgid "Testing PR"
+msgstr "PR testing"
+
+#: templates/index.html:53
+msgid "Autoupdate PR"
+msgstr "PR autoupdate"
+
+#: templates/index.html:76 templates/index.html:90 templates/index.html:105
+msgid "Broken"
+msgstr "Cassée"
+
+#: templates/index.html:78 templates/index.html:92 templates/index.html:107
+msgid "Low quality"
+msgstr "Mauvaise qualité"
+
+#: templates/index.html:86 templates/index.html:101
+#, python-format
+msgid "Outdated test (%(days)s days ago)"
+msgstr "Test périmé (%(days)s jours)"
+
+#: templates/index.html:124 templates/index.html:139
+#, python-format
+msgid "Inactive (%(days)s days ago)"
+msgstr "Inactif (%(days)s jours)"
+
+#: templates/index.html:149
+msgid "Packaging v1"
 msgstr ""
 
-#: templates/index.html:188
-msgid "Autoupdate PR"
-msgstr ""
+#: templates/index.html:152
+msgid "Deprecated"
+msgstr "Dépréciée"
+
+#: templates/index.html:155
+msgid "Not maintained"
+msgstr "Non maintenue"
 

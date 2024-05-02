@@ -2,16 +2,16 @@
 {% block main %}
 
 <div class="w-full">
-    <h1 class="text-center font-medium text-2xl py-2">Apps quality level from automatic tests</h1>
+    <h1 class="text-center font-medium text-2xl py-2">{{ _("Apps quality level from automatic tests") }}</h1>
     <div id="levelRing" class="h-80"></div>
 </div>
 <div class="w-full">
-    <h1 class="text-center font-medium text-2xl py-2">Apps quality level history</h1>
+    <h1 class="text-center font-medium text-2xl py-2">{{ _("Apps quality level history") }}</h1>
     <div id="levelHistory" class="h-80"></div>
 </div>
 
 <div class="mx-auto w-80">
-    <h1 class="text-center font-medium text-2xl py-2">History</h1>
+    <h1 class="text-center font-medium text-2xl py-2">{{ _("History") }}</h1>
     <div>
         {% for date, news in news_per_date.items()|reverse %}
             <h2 class="text-center font-medium text-xl py-4">{{ date }}</h2>
@@ -19,25 +19,25 @@
             <ul>
             {% for app, url in news["added"] %}
                 <li>
-                    <span class="text-sm text-center inline-block w-24 rounded border border-blue-600 text-blue-600 mr-1"><i class="fa fa-plus" aria-hidden="true"></i> Added</span>
+                    <span class="text-sm text-center inline-block w-24 rounded border border-blue-600 text-blue-600 mr-1"><i class="fa fa-plus" aria-hidden="true"></i> {{ _("Added") }}</span>
                     <a href="{{url}}">{{app}}</a>
                 </li>
             {% endfor %}
             {% for app, url in news["repaired"] %}
                 <li>
-                    <span class="text-sm text-center inline-block w-24 rounded border border-green-600 text-green-600 mr-1"><i class="fa fa-check" aria-hidden="true"></i> Repaired</span>
+                    <span class="text-sm text-center inline-block w-24 rounded border border-green-600 text-green-600 mr-1"><i class="fa fa-check" aria-hidden="true"></i> {{ _("Repaired") }}</span>
                     <a href="{{url}}">{{app}}</a>
                 </li>
             {% endfor %}
             {% for app, url in news["broke"] %}
                 <li>
-                    <span class="text-sm text-center inline-block w-24 rounded border border-amber-600 text-amber-600 mr-1"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Broke</span>
+                    <span class="text-sm text-center inline-block w-24 rounded border border-amber-600 text-amber-600 mr-1"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ _("Broke") }}</span>
                     <a href="{{url}}">{{app}}</a>
                 </li>
             {% endfor %}
             {% for app, url in news["removed"] %}
                 <li>
-                    <span class="text-sm text-center inline-block w-24 rounded border border-red-600 text-red-600 mr-1"><i class="fa fa-times" aria-hidden="true"></i> Removed</span>
+                    <span class="text-sm text-center inline-block w-24 rounded border border-red-600 text-red-600 mr-1"><i class="fa fa-times" aria-hidden="true"></i> {{ _("Removed") }}</span>
                     <a href="{{url}}">{{app}}</a>
                 </li>
             {% endfor %}
@@ -77,16 +77,16 @@ window.onload = function () {
           indexLabel: "{label} - {y}",
           toolTipContent: "<b>{label}:</b> {y}",
           dataPoints: [
-              { y: {{ level_summary["unknown"] }},   label: "Unknown", color: "#cccccc" },
-              { y: {{ level_summary[0] }}, label: "Level 0", color: colors_per_level[0] },
-              { y: {{ level_summary[1] }}, label: "Level 1", color: colors_per_level[1] },
-              { y: {{ level_summary[2] }}, label: "Level 2", color: colors_per_level[2] },
-              { y: {{ level_summary[3] }}, label: "Level 3", color: colors_per_level[3] },
-              { y: {{ level_summary[4] }}, label: "Level 4", color: colors_per_level[4] },
-              { y: {{ level_summary[5] }}, label: "Level 5", color: colors_per_level[5] },
-              { y: {{ level_summary[6] }}, label: "Level 6", color: colors_per_level[6] },
-              { y: {{ level_summary[7] }}, label: "Level 7", color: colors_per_level[7] },
-              { y: {{ level_summary[8] }}, label: "Level 8", color: colors_per_level[8] },
+              { y: {{ level_summary["unknown"] }},   label: "{{ _("Unknown") }}", color: "#cccccc" },
+              { y: {{ level_summary[0] }}, label: "{{ _("Level 0") }}", color: colors_per_level[0] },
+              { y: {{ level_summary[1] }}, label: "{{ _("Level 1") }}", color: colors_per_level[1] },
+              { y: {{ level_summary[2] }}, label: "{{ _("Level 2") }}", color: colors_per_level[2] },
+              { y: {{ level_summary[3] }}, label: "{{ _("Level 3") }}", color: colors_per_level[3] },
+              { y: {{ level_summary[4] }}, label: "{{ _("Level 4") }}", color: colors_per_level[4] },
+              { y: {{ level_summary[5] }}, label: "{{ _("Level 5") }}", color: colors_per_level[5] },
+              { y: {{ level_summary[6] }}, label: "{{ _("Level 6") }}", color: colors_per_level[6] },
+              { y: {{ level_summary[7] }}, label: "{{ _("Level 7") }}", color: colors_per_level[7] },
+              { y: {{ level_summary[8] }}, label: "{{ _("Level 8") }}", color: colors_per_level[8] },
           ]
       }]
   }).render();
@@ -104,8 +104,8 @@ window.onload = function () {
                 color: colors_per_level[{{ level }}],
                 type: "stackedArea",
                 showInLegend: true,
-                toolTipContent: "<span style=\"color:"+colors_per_level[{{ level }}]+"\"><strong>Level {{ level }}: </strong></span> {y}{% if loop.first %}<br><b>Total:<b> #total{% endif %}",
-                name: "Level {{ level }}",
+                toolTipContent: "<span style=\"color:"+colors_per_level[{{ level }}]+"\"><strong>{{ _("Level %(level)s:", level=level) }}</strong></span> {y}{% if loop.first %}<br><b>{{ _("Total:") }} #total</b> @ {label}{% endif %}",
+                name: "{{ _("Level %(level)s", level=level) }}",
                 dataPoints: [
                     {% for d in history %}
                         { label: "{{ d.date }}", y: {{ d["level-"+level|string] }} },
