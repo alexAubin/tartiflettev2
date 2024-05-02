@@ -23,6 +23,7 @@
         <option {% if request.args.get("filter") == "regressions_bookworm" %}selected{% endif %} value="regressions_bookworm">{{ _("Major regressions on Bookworm CI") }}</option>
         <option {% if request.args.get("filter") == "testings" %}selected{% endif %} value="testings">{{ _("Apps with testings PRs") }}</option>
         <option {% if request.args.get("filter") == "autoupdate" %}selected{% endif %} value="autoupdate">{{ _("Apps with autoupdate PRs") }}</option>
+        <option {% if request.args.get("filter") == "packagingv1" %}selected{% endif %} value="packagingv1">{{ _("Packaging v1 apps") }}</option>
         </select>
     </div>
     <div class="inline-block">
@@ -64,6 +65,7 @@
         data-last-update-master-daysago="{{ infos["ci_results"]["main"]["timestamp"] | days_ago }}"
         data-last-update-testing-daysago="{% if infos["testing"] %}{{ infos["testing"]["timestamp_updated"] | days_ago }}{% endif %}"
         data-last-update-autoupdate-daysago="{% if infos["ci-auto-update"] %}{{ infos["ci-auto-update"]["timestamp_updated"] | days_ago }}{% endif %}"
+        data-packaging-format="{{ infos["packaging_format"] }}"
      >
         <td class="text-center text-blue-600 font-medium"><a href="{{ infos["url"] }}">{{ app }}</a></td>
         <td class="font-bold">
@@ -234,6 +236,17 @@
             else if (filterName == "autoupdate")
             {
                 if (entries[i].dataset.lastUpdateAutoupdateDaysago)
+                {
+                    entries[i].classList.remove("hidden");
+                }
+                else
+                {
+                    entries[i].classList.add("hidden");
+                }
+            }
+            else if (filterName == "packagingv1")
+            {
+                if (entries[i].dataset.packagingFormat == "1")
                 {
                     entries[i].classList.remove("hidden");
                 }
