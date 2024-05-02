@@ -164,6 +164,8 @@
     {% endfor %}
 </table>
 
+<div id="nbEntriesFound" class="text-center text-gray-600 text-sm py-3"></div>
+
 
 <script type="text/javascript">
 
@@ -171,18 +173,22 @@
         // Locate the card elements
         let entries = document.getElementsByClassName('app')
         let filterName = selectFilter.value.trim();
+        let nb_found = 0;
+
         // Loop through the entries
         for (var i = 0; i < entries.length; i++) {
 
             if (filterName == "none")
             {
                 entries[i].classList.remove("hidden");
+                nb_found++;
             }
             else if (filterName == "regressions_main_ci")
             {
                 if (entries[i].dataset.publicLevel > entries[i].dataset.mainCiLevel)
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -194,6 +200,7 @@
                 if (entries[i].dataset.publicLevel <= 4)
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -205,6 +212,7 @@
                 if (entries[i].dataset.mainCiDaysago >= 30)
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -216,6 +224,7 @@
                 if ((entries[i].dataset.publicLevel >= 6) && (entries[i].dataset.nextdebianCiLevel < 6))
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -227,6 +236,7 @@
                 if (entries[i].dataset.lastUpdateTestingDaysago)
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -238,6 +248,7 @@
                 if (entries[i].dataset.lastUpdateAutoupdateDaysago)
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -249,6 +260,7 @@
                 if (entries[i].dataset.packagingFormat == "1")
                 {
                     entries[i].classList.remove("hidden");
+                    nb_found++;
                 }
                 else
                 {
@@ -256,6 +268,8 @@
                 }
             }
         }
+
+        document.getElementById('nbEntriesFound').innerHTML = "(" + nb_found + " apps)";
 
         updateQueryArgsInURL()
     }
