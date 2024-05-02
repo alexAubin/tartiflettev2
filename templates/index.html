@@ -194,9 +194,9 @@
         data-app="{{ app }}"
         data-public-level="{{ infos["public_level"] if infos["public_level"] != "?" else -1 }}"
         data-popularity-stars="{{ infos["popularity_stars"] }}"
-        data-main-ci-level="{{ infos["ci_results"]["main"]["level"] }}"
-        data-main-ci-daysago="{{ infos["ci_results"]["main"]["timestamp"] | days_ago }}"
-        data-nextdebian-ci-level="{{ infos["ci_results"]["nextdebian"]["level"] }}"
+        data-main-ci-level="{% if infos["ci_results"]["main"] %}{{ infos["ci_results"]["main"]["level"] }}{% else %}-1{% endif %}"
+        data-main-ci-daysago="{% if infos["ci_results"]["main"] %}{{ infos["ci_results"]["main"]["timestamp"] | days_ago }}{% else %}-9999{% endif %}"
+        data-nextdebian-ci-level="{% if infos["ci_results"]["nextdebian"] %}{{ infos["ci_results"]["nextdebian"]["level"] }}{% else %}-1{% endif %}"
         data-last-update-master-daysago="{{ infos["ci_results"]["main"]["timestamp"] | days_ago }}"
         data-last-update-testing-daysago="{% if infos["testing"] %}{{ infos["testing"]["timestamp_updated"] | days_ago }}{% endif %}"
         data-last-update-autoupdate-daysago="{% if infos["ci-auto-update"] %}{{ infos["ci-auto-update"]["timestamp_updated"] | days_ago }}{% endif %}"
@@ -228,16 +228,20 @@
             </a>
         </td>
         <td>
-            <a class="{% if infos["ci_results"]["nextdebian"]["timestamp"] | days_ago > 30 %}opacity-50{% endif %}" href="https://ci-apps-bookworm.yunohost.org/ci/apps/{{ app }}/">
-                {{ infos["ci_results"]["nextdebian"]["level"] }}
-                {% if infos["ci_results"]["nextdebian"]["timestamp"] | days_ago > 30 %}
-                <i class="fa fa-hourglass-o" title="Outdated test ({{ infos["ci_results"]["nextdebian"]["timestamp"] | days_ago }} days ago)"></i>
-                {% endif %}
-                {% if infos["public_level"] == "?" %}
-                {% elif infos["ci_results"]["nextdebian"]["level"] < infos["public_level"] and infos["ci_results"]["nextdebian"]["level"] == 0 %}
-                    <i class="fa fa-exclamation-circle text-red-500" title="Broken"></i>
-                {% elif infos["ci_results"]["nextdebian"]["level"] < infos["public_level"] and infos["ci_results"]["nextdebian"]["level"] <= 4 %}
-                    <i class="fa fa-exclamation-triangle text-amber-500" title="Low quality"></i>
+            <a class="{% if infos["ci_results"]["nextdebian"] and infos["ci_results"]["nextdebian"]["timestamp"] | days_ago > 30 %}opacity-50{% endif %}" href="https://ci-apps-bookworm.yunohost.org/ci/apps/{{ app }}/">
+                {% if infos["ci_results"]["nextdebian"] %}
+                    {{ infos["ci_results"]["nextdebian"]["level"] }}
+                    {% if infos["ci_results"]["nextdebian"]["timestamp"] | days_ago > 30 %}
+                    <i class="fa fa-hourglass-o" title="Outdated test ({{ infos["ci_results"]["nextdebian"]["timestamp"] | days_ago }} days ago)"></i>
+                    {% endif %}
+                    {% if infos["public_level"] == "?" %}
+                    {% elif infos["ci_results"]["nextdebian"]["level"] < infos["public_level"] and infos["ci_results"]["nextdebian"]["level"] == 0 %}
+                        <i class="fa fa-exclamation-circle text-red-500" title="Broken"></i>
+                    {% elif infos["ci_results"]["nextdebian"]["level"] < infos["public_level"] and infos["ci_results"]["nextdebian"]["level"] <= 4 %}
+                        <i class="fa fa-exclamation-triangle text-amber-500" title="Low quality"></i>
+                    {% endif %}
+                {% else %}
+                ?
                 {% endif %}
             </a>
         </td>
